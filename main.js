@@ -88,6 +88,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   tick();
 })();
 
+// ── THEME TOGGLE ──────────────────────────────────
+(function initTheme() {
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  if (localStorage.getItem('theme') === 'light') document.body.classList.add('light');
+
+  btn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  });
+})();
+
 // ── HEADER BORDER ON SCROLL ───────────────────────
 const header = document.querySelector('.header');
 window.addEventListener('scroll', () => {
